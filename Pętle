@@ -1,0 +1,30 @@
+Console.WriteLine("1. Za pomocą pętli while wyświetlić liczby z zakresu 10 do 35.");
+int a = 10;
+while (a<= 35)
+{
+    Console.WriteLine(a);
+    a++;
+}
+Console.WriteLine("\n\n2. Pobiera od użytkownika liczbę całkowitą n i oblicza wartość n!.");
+Console.WriteLine("Podaj liczbę całkowitą ");
+
+int b= Convert.ToInt32(Console.ReadLine());
+int d = 1;
+for (int c = 1; c <= b; c++)
+{
+    d = d*c;
+
+}
+Console.WriteLine("Wartość "+b+"! to "+d);
+
+Console.WriteLine("\n\n3. Drukuje na ekranie kwadrat. Długość boku kwadratu wczytujemy z klawiatury. ");
+Console.WriteLine("Podaj długość boku ");
+int k = Convert.ToInt32(Console.ReadLine());
+for (int y=1;y<=k;y++) 
+{
+    for (int x = 1; x <= k; x++)
+    {
+        Console.Write("K");
+    }
+    Console.WriteLine("");
+}
