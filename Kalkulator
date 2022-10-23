@@ -1,0 +1,107 @@
+using System;
+using System.Net.NetworkInformation;
+
+start:
+Console.Clear();
+
+// wszystkie zmienne
+int a=0;
+int b=0;
+decimal wynik = 0;
+int dzialanie = 0;
+int ktora = 0;
+string ponow = "n";
+//koniec zmiennych
+
+// oczekiwanie na liczby
+Console.WriteLine("Podaj pierwszą liczbę");
+a = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Podaj drugą liczbę");
+b = Convert.ToInt32(Console.ReadLine());
+
+
+Console.WriteLine("Twoje liczby to:\n" + a + "\n" + b+"\n");
+
+// wybór działania
+Console.WriteLine("Które działanie wykonać?");
+Console.WriteLine("1: Dodawanie \n2: Odejmowanie \n3: Mnożenie \n4: Dzielenie \n5: Wartość procentowa\n6: Potęgowanie \n7: Pierwiastkowanie\n");
+dzialanie = Convert.ToInt32(Console.ReadLine());
+
+switch (dzialanie)
+{
+	case 1:
+		wynik = a + b;
+		Console.WriteLine("Wynik dodawania twoich liczb to" + wynik);
+		break;
+	
+	case 2:
+		wynik = a - b;
+		Console.WriteLine("Wynik odejmowania twoich liczb to " + wynik);
+		break;
+	
+	case 3:
+		wynik = a * b;
+		Console.WriteLine("Wynik mnożenia twoich liczb to " + wynik);
+		break;
+	
+	case 4:
+		if (a==0 || b == 0) {
+			Console.WriteLine("Nie można dzielić przez zero");
+			break;
+		}
+
+		else if (a > b)
+		{
+			wynik = a / b;
+		}
+		else
+		{
+			wynik = b / a;
+		}
+		Console.WriteLine("Wynik dzielenia twoich liczb (większa przez mniejszą) to " + wynik);
+		break;
+	
+	case 5:
+		wynik = (b * 100) / a;
+		Console.WriteLine("Liczba " + b + " to " + wynik + "% liczby " + a);
+		break;
+	
+	case 6:
+		Console.WriteLine("Którą liczbczę chcesz podnieść do potęgi 1 czy 2?");
+		ktora=Convert.ToInt32(Console.ReadLine());
+		if (ktora == 1)
+		{
+			Console.WriteLine("Twoja liczba podniesiona do potęgi to " + Math.Pow(a, 2));
+		}
+		else
+		{
+			Console.WriteLine("Twoja liczba podniesiona do potęgi to " + Math.Pow(b, 2));
+		}
+		break;
+	
+	case 7:
+		Console.WriteLine("Którą liczbczę chcesz pierwiastkować 1 czy 2?");
+		ktora = Convert.ToInt32(Console.ReadLine());
+		if (ktora == 1)
+		{
+			Console.WriteLine("Pierwiastek z twojej liczby to " + Math.Sqrt(a));
+		}
+		else
+		{
+			Console.WriteLine("Pierwiastek z twojej liczby to " + Math.Sqrt(b));
+		}
+		break;
+
+	default:
+		Console.WriteLine("Wybrałeś opcję, której nie ma na liście");
+		break;
+}
+Console.WriteLine("\n");
+Console.WriteLine("Uruchomić program ponownie? t/n");
+ponow = Console.ReadLine();
+
+if (ponow == "t")
+{
+	goto start; // powrót na początek programu jeżli chce tego użytkownik
+}
