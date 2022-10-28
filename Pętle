@@ -1,30 +1,43 @@
 Console.WriteLine("1. Za pomocą pętli while wyświetlić liczby z zakresu 10 do 35.");
-int a = 10;
-while (a<= 35)
+int a = 10; // Zmienna początkowa
+while (a<= 35) // Dopóki zmienna a jest mniejsza lub równa wykonuję pętle
 {
-    Console.WriteLine(a);
-    a++;
+    Console.WriteLine(a); // Wypisuje zmienną a
+    a++; // Zwiększa zmienną a o jeden
 }
 Console.WriteLine("\n\n2. Pobiera od użytkownika liczbę całkowitą n i oblicza wartość n!.");
 Console.WriteLine("Podaj liczbę całkowitą ");
 
-int b= Convert.ToInt32(Console.ReadLine());
-int d = 1;
-for (int c = 1; c <= b; c++)
+double b= Convert.ToDouble(Console.ReadLine()); // Wczytanie z klawiatury i konwersja na Double 
+long d = 1; // Wynik działania- nie może być int bo za mała tablica :D // Ja wysłałem na Double dla was zmieniłem na Long ( Największa tablica )
+for (double c = 1; c <= b; c++) 
 {
-    d = d*c;
+    //Console.Write(d+"*"+c+"="+d*c+"\n"); //sprawdzam jakie zmienne wypisuje
+    d = d*c; 
 
 }
 Console.WriteLine("Wartość "+b+"! to "+d);
 
 Console.WriteLine("\n\n3. Drukuje na ekranie kwadrat. Długość boku kwadratu wczytujemy z klawiatury. ");
 Console.WriteLine("Podaj długość boku ");
-int k = Convert.ToInt32(Console.ReadLine());
-for (int y=1;y<=k;y++) 
+int k = Convert.ToInt32(Console.ReadLine()); // Wczytanie długości boku z klawiatury
+for (int y=1;y<=k;y++)  // Pętla, która robi wiersze
 {
-    for (int x = 1; x <= k; x++)
+    for (int x = 1; x <= k; x++) // Pętla, która robi kolumny
     {
-        Console.Write("K");
+        Console.Write("K"); 
     }
     Console.WriteLine("");
+
+    /*
+        Console.Write("K") - Wypisuje literkę K i nie przechodzi do nowej linii.
+        Console.WriteLine("K") - Wypiszę literkę i przejdzie do następnej linii
+       
+        Załóżmy że pętla wykona się 4 razy:
+        Wynikiem dla Write() będzie  KKKK
+        a dla WriteLine() będzie  K
+                                  K
+                                  K
+                                  K
+     */
 }
