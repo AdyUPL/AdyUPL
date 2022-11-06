@@ -29,10 +29,11 @@ namespace Tablice
 			Console.Clear(); // Czyszczenie konsoli żeby ładnie to wyglądało
 
 			// Tu zdecydowałem pójść na skróty - Co poskutkowało większym kodem ( bałagan )
+			// Tablica wyświetla się w takiej kolejności bo tak ustaliliśmy na ćwieczeniach
 
 			for (int j = 0; j < 3; j++)
 			{
-				Console.WriteLine(tablica[wybor, 1] + tablica[wybor, 0]);
+				Console.WriteLine(tablica[wybor, 1] + tablica[wybor, 0]); 
 			}
 			for (int j = 0; j < 3; j++)
 			{
