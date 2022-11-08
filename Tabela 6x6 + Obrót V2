@@ -1,0 +1,101 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Tablice
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            //To zadanie wykonałem trochę inaczej niż brzmiało polecenie.
+
+            string[,] tablica = new string[4, 4]{ // Tablica składająca się z 4 zbiorów po 4 elementy
+
+				{"%%%","###","***","+++"},
+                {"+++","%%%","###","***"},
+                {"***","+++","%%%","###"},
+                {"###","***","+++","%%%"} };
+
+
+
+            int wybor = 0; // Zmianna decydująca ktory zbiór wyświetlić :D
+
+            //Wypisz: - STARE
+
+            for (int numer=0; numer != 3;) {
+
+
+                Console.Clear(); // Czyszczenie konsoli żeby ładnie to wyglądało
+
+                // Tu zdecydowałem pójść na skróty - Co poskutkowało większym kodem ( bałagan )
+                // Tablica wyświetla się w takiej kolejności bo tak ustaliliśmy na ćwieczeniach
+
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.WriteLine(tablica[wybor, 1] + tablica[wybor, 0]);
+                }
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.WriteLine(tablica[wybor, 2] + tablica[wybor, 3]);
+                }
+
+                //Console.WriteLine("wybor="+wybor); // Wypisanie zmiennej wybor żeby sprawdzić co się z nią dzieje :D
+
+                Console.WriteLine("1 - obórć w lewo \n2- obróć w prawo\n3 - Wyjdź z programu\nInna liczba resetuje tablice");
+
+                bool sprawdz = int.TryParse(Console.ReadLine(), out numer); // Sprawdzam czy wprowadzone znaki są liczbami.
+
+                if (sprawdz)
+                {  // Jeżeli TRUE to wykonaj SWITCH
+
+                    switch (numer)
+                    {
+                        case 1:
+                            if (wybor >= 3) // Jeżeli przekroczymy ostatni zbiór tabeli to ustawiamy na początkowy zbiór
+                            {
+                                wybor = 0; // Początkowy zbiór w tabeli
+                            }
+                            else
+                            {
+                                wybor += 1; // obrót w lewo
+                            }
+                            break;
+
+                        case 2:
+                            if (wybor <= 0) // Jeżeli wybór jest 0 ,a chcemy odjąć (czyli obórić w prawo) to musimy ustawić ostatni zbiór w tabeli
+                            {
+                                wybor = 3; // Ostatni zbiór w tabeli
+                            }
+                            else
+                            {
+                                wybor -= 1; // Obrót w prawo
+                            }
+                            break;
+                           
+                        default:
+                            //goto Wypisz; 
+                            wybor = 0;// Domyślna tabela
+                            break;
+
+                    }
+                }
+                else { 
+                    numer = 4;
+                    Console.Clear();
+                    Console.WriteLine("BŁĄD\nPodana wartość nie jest liczbą\nWciśnij dowolny klawisz aby spróbować jeszcze raz..");
+                    Console.ReadKey();                
+                }
+            } // Jeżeli nie jest to liczba to tylko odświeża tabele i daje taki fikuśny komunikat :D
+
+            // goto Wypisz; // Skok do początku STARE
+
+
+        }
+    }
+}
