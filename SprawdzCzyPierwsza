@@ -34,6 +34,11 @@ namespace Algorytmy
 
 		static bool sprawdzCzyPierwsza(int a) // Funkcja/Metoda typu ( TRUE, FALSE )
 		{
+			if (a == 0)
+				return false;
+			if (a == 1)
+				return false;
+
 			if (a % 2 == 0) { // Sprawdzam czy reszta z dzielenia przez 2 to 0
 				return (a == 2); // Jeżeli tak to sprawdzam czy to dwa bo tylko 2 jest liczbą pierwszą i parzystą
 			}
