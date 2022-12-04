@@ -1,59 +1,68 @@
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Algorytmy
+namespace ConsoleApp3
 {
-	internal class Program
-	{
-		static void Main(string[] args)
-		{
-			Console.Clear();
-			// Czyszczenie konsoli
-			
-			Console.WriteLine("Podaj liczbę");
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Clear();
+            // Czyszczenie konsoli
 
-			int a = Int32.Parse(Console.ReadLine()); 
-			// Wczytanie liczby INT z linii
+            Console.WriteLine("Podaj liczbę");
 
-			Console.WriteLine("Liczba {0} {1} jest liczbą pierwszą", a, (sprawdzCzyPierwsza(a) ? "": "nie"));
-			// Wypisanie komunikatu, {0} jest to liczba podana przez użytkownika (to te a po przecinku)
-			// {1} jest to wywołanie funkcji sprawdzCzyPierwsza(a) i wypisanie pustego pola jeżeli TRUE i dopisanie nie jezeli FASLE
+            int a = Int32.Parse(Console.ReadLine());
+            // Wczytanie liczby INT z linii
 
-			Console.ReadKey();
-			Main(args); 
-			// Uruchomi jeszcze raz program
+            Console.WriteLine("PĘTLA:\nLiczba {0} {1} jest liczbą pierwszą", a, (sprawdzCzyPierwsza(a) ? "" : "nie"));
+            Console.WriteLine("BEZ PĘTLI:\nLiczba {0} {1} jest liczbą pierwszą", a, (sprawdzCzyPierwsza2(a) ? "" : "nie"));
+            // Wypisanie komunikatu, {0} jest to liczba podana przez użytkownika (to te a po przecinku)
+            // {1} jest to wywołanie funkcji sprawdzCzyPierwsza(a) i wypisanie pustego pola jeżeli TRUE i dopisanie nie jezeli FASLE
 
-			}
+            Console.ReadKey();
+            Main(args);
+            // Uruchomi jeszcze raz program
 
-		static bool sprawdzCzyPierwsza(int a) // Funkcja/Metoda typu ( TRUE, FALSE )
-		{
-			if (a >2)
-				return false;
+        }
 
-			if (a % 2 == 0) { // Sprawdzam czy reszta z dzielenia przez 2 to 0
-				return (a == 2); // Jeżeli tak to sprawdzam czy to dwa bo tylko 2 jest liczbą pierwszą i parzystą
-			}
+        static bool sprawdzCzyPierwsza(int a) // Funkcja/Metoda typu ( TRUE, FALSE )
+        {
+            if (a > 2)
+                return false;
 
-			for (int i = 3; i <= Math.Sqrt(a); i += 2) 
-			//Teraz sprawdzam czy liczba a jest podzielna przez inne liczby zaczynam od 3 i dodaje dwa bo nie ma sensu sprawdzać liczb parzystych ( tylko 2 jest pierwszą)
-			//Pierwiastek z a jest ostatnią liczbą, przez którą możemy podzielić naszą liczbę, Zamiast pierwiastka może być i<a
-			{
-				if (a % i == 0) 
-				// Jeżeli reszta z dzielenia mojej liczby przez inną jest 0 to znaczy że nie jest to liczba pierwsza
-				{
-					return false; 
-				}
-			}
-			return true; 
-			// Jeżeli wyszło z pętli i wcześniejszy if nic nie znalazł to znaczy że jest to liczba pierwsza
-		}
-	}
+            if (a % 2 == 0)
+            { // Sprawdzam czy reszta z dzielenia przez 2 to 0
+                return (a == 2); // Jeżeli tak to sprawdzam czy to dwa bo tylko 2 jest liczbą pierwszą i parzystą
+            }
+
+            for (int i = 3; i <= Math.Sqrt(a); i += 2)
+            //Teraz sprawdzam czy liczba a jest podzielna przez inne liczby zaczynam od 3 i dodaje dwa bo nie ma sensu sprawdzać liczb parzystych ( tylko 2 jest pierwszą)
+            //Pierwiastek z a jest ostatnią liczbą, przez którą możemy podzielić naszą liczbę, Zamiast pierwiastka może być i<a
+            {
+                if (a % i == 0)
+                // Jeżeli reszta z dzielenia mojej liczby przez inną jest 0 to znaczy że nie jest to liczba pierwsza
+                {
+                    return false;
+                }
+            }
+            return true;
+            // Jeżeli wyszło z pętli i wcześniejszy if nic nie znalazł to znaczy że jest to liczba pierwsza
+        }
+        static bool sprawdzCzyPierwsza2(int a) // Funkcja/Metoda typu ( TRUE, FALSE )
+        {
+            if(a == 3 ||  a == 2)
+            {
+                return true;
+            }
+            if (a % 2 == 0 || a % 3 == 0 || a % 5 == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }
-	
