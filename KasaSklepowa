@@ -1,0 +1,104 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/*Za pomocą instrukcji warunkowych, pętli oraz typów strukturowych napisać program który obsługuje prostą kasę sklepową z użyciem metod.
+Sklep ma mieć zdefiniowaną strukturę artykułów.
+Należy uwzględnić cenę za sztukę i osobno cenę za kg!
+
+Artykułów ma być max 5. zdefiniowanych jako elementy struktury!
+
+Użytkownik (Kasjer) ma mieć możliwość wybierania artykułu, podawania jego ilości, lub wagi.
+
+Działanie programu:
+Powitanie->
+Wybór artykuły->
+Czyszczenie ekranu i zadanie pytania o ilość danego artykułu -> 
+Wprowadzenie danych -> 
+Pytanie czy kasjer chce dodać następny czy ma wydrukować paragon ->
+Jeśli następny towar, ponowne czyszczenie ekranu i wybór artykułu ->
+powtórzenie dodawania i pytania -> 
+Jeśli zakończenie to ma pojawić się lista zakupionych towarów wraz z ich ilością oraz ceną, oraz podsumowanie kwoty całego rachunku -> 
+Opcja zamknij program / Nowy Klient*/
+
+
+
+
+namespace KasaSklepowa
+{
+	internal class Program
+	{
+		struct item
+		{
+			public int id;
+
+			public string nazwa;
+
+			public double cenaszt;
+
+			public double cenakg;
+
+		}
+
+		static public void Main(string[] args)
+		{
+			var Koszyk = new List<string> {
+			};
+
+			item pomidor ;
+			item ziemniak;
+			item cukierek;
+			// Deklaracja 3 przedmiotów w sklepie
+
+			pomidor.id = 1;
+			pomidor.nazwa = "Pomidor malinowy";
+			pomidor.cenaszt = 2.15;
+			pomidor.cenakg = 14;
+
+			ziemniak.id = 2;
+			ziemniak.nazwa = "Ziemniak polski";
+			ziemniak.cenaszt = 0.60;
+			ziemniak.cenakg = 11.20;
+
+			cukierek.id = 3;
+			cukierek.nazwa = "Cukierek dobry";
+			cukierek.cenaszt = 0.31;
+			cukierek.cenakg = 17.99;
+
+
+			Menu(pomidor.nazwa, ziemniak.nazwa, cukierek.nazwa);
+		}
+
+		static void Menu(string nazwa1, string nazwa2, string nazwa3)
+		{
+
+			Console.Clear();
+			Console.WriteLine("Witamy w systemie kasowym");
+			Console.WriteLine("Proszę wybrać produkt:");
+			Console.WriteLine("1:{0}\n2.{1}\n3.{2}",nazwa1,nazwa2,nazwa3);
+			int wybor = Int32.Parse(Console.ReadLine());
+
+
+		}
+
+		static void WyborProduktu(int a)
+		{
+			Console.Clear();
+			Console.WriteLine("Proszę wybrać produkt");
+		}
+
+		public void Ilosc(int a)
+		{
+			DodajDoKoszyka(0, a, 0, 0);
+		}
+
+		public void DodajDoKoszyka(int id,int ilosc, double cena ,double lacznie)
+		{
+		
+		}
+
+
+	}
+}
