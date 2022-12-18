@@ -1,0 +1,146 @@
+Napisać prostą książkę telefoniczną z poniższymi funkcjami wywoływanymi spod komend klawiatury:
+- [w]  Wyświetlanie całej książki telefonicznej
+- [s] Szukanie po nazwisku i imieniu
+- [a] Szukanie po numerze telefonu
+- [d] Dodawanie nowego wpisu do książki
+
+Książka początkowo ma posiadać 10 wpisów.
+
+Po każdym wywołaniu opcji wcześniejsze wyświetlenie danych ma być czyszczone. Program ma działać w pętli do.. while
+
+Program zaczynamy pisać podczas zajęć laboratoryjnych.
+---------------------------------------------------------------------------
+
+
+
+using System;
+using System.Collections.Generic;
+
+namespace Slowniki
+{
+
+    static class Program
+    {
+        public static SortedDictionary<string, string> numery = new SortedDictionary<string, string>
+            { // Imiona i Nazwiska - wylosowane ze strony random-data-generator.com
+               { "000000000", "Pietrzak Filip"},
+               { "111111111", "Mazur Błażej"},
+               { "222222222", "Lis Aniela"},
+               { "333333333", "Wojciechowski Miłosz"},
+               { "444444444", "Baranowska Ewelina"},
+               { "555555555", "Szulc Aisha"},
+               { "666666666", "Gajewski Krzysztof"},
+               { "777777777", "Kowalski Fabian"},
+               { "888888888", "Borkowska Blanka"},
+               { "999999999", "Zawadzka Krystyna"}
+            };
+
+
+
+
+        static void Main(string[] args)
+        {
+
+
+            ConsoleKeyInfo KeyInfo;
+
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Dostępne opcje:");
+                Console.WriteLine("[w] - Wyświetl całą książkę");
+                Console.WriteLine("[s] - Szukaj po nazwisku i imieniu");
+                Console.WriteLine("[a] - Szukaj po numerze telefonu");
+                Console.WriteLine("[d] - Dodaj nowy wpis");
+                Console.WriteLine("[x] - Zamknij program");
+                KeyInfo = Console.ReadKey();
+
+                if (KeyInfo.Key == ConsoleKey.W)
+                {
+                    Console.Clear();
+                    Console.WriteLine("↓ [w] - Wyświetl całą książkę ↓");
+
+                    if (numery.Count == 0)
+                    {
+                        Console.WriteLine("brak pozycji");
+                    }
+                    else
+                    {
+                        foreach (KeyValuePair<string, string> product in numery)
+                        {
+                            Console.WriteLine($" - {product.Key} - {product.Value}");
+                        }
+                    }
+                    
+
+
+                        Console.ReadKey();
+                }
+
+                if (KeyInfo.Key == ConsoleKey.S)
+                {
+                    Console.Clear();
+                    Console.WriteLine("↓ [s] - Szukaj po nazwisku i imieniu ↓");
+                    Console.WriteLine("Podaj Nazwisko i Imię:");
+                    string NazwiskoImie = Console.ReadLine();
+                    string key = SzukajKlucz(numery, NazwiskoImie);
+                    Console.WriteLine($"Numer telefonu dla {NazwiskoImie} - {key}");
+                    Console.ReadLine();
+
+                }
+
+                if (KeyInfo.Key == ConsoleKey.A)
+                {
+                    Console.Clear();
+
+                        Console.WriteLine("↓ [a] - Szukaj po numerze telefonu ↓");
+                        Console.WriteLine("Podaj numer telefonu:");
+                        string Numer = Console.ReadLine();
+                        if (numery.TryGetValue(Numer, out string Osoba))
+                        {
+                            Console.WriteLine($"Numer należy do: {Osoba}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nie znaleziono takiego numeru w bazie");
+                        }
+
+                        Console.ReadKey();
+                }
+                
+
+                if (KeyInfo.Key == ConsoleKey.D)
+                {
+                    Console.Clear();
+                    Console.WriteLine("↓ [d] - Dodaj nowy wpis ↓");
+                    Console.WriteLine("Podaj numer telefonu");
+                    string Numer = Console.ReadLine();
+                    Console.WriteLine("Podaj Imie");
+                    string NazwiskoImie=Console.ReadLine();
+                    Console.WriteLine("Podaj Nazwisko");
+                    NazwiskoImie = Console.ReadLine() +" "+NazwiskoImie ;
+                    numery.Add(Numer, NazwiskoImie);
+                }
+
+
+            }
+            while (KeyInfo.Key != ConsoleKey.X);
+
+        }
+        public static T SzukajKlucz<T, W>(this SortedDictionary<T, W> numery, W Wartosc) // Funkcja machniom szuka Pary w której wartość jest podawana przez użytkownika i zwraca klucz dla niej ( Numer tel.)
+        {
+            T key = default;
+            foreach (KeyValuePair<T, W> pair in numery)
+            {
+                if (EqualityComparer<W>.Default.Equals(pair.Value, Wartosc))
+                {
+                    key = pair.Key;
+                    break;
+                }
+            }
+            return key;
+        }
+    }
+
+}
