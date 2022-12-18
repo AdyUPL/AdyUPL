@@ -16,6 +16,12 @@ Program zaczynamy pisać podczas zajęć laboratoryjnych.
 using System;
 using System.Collections.Generic;
 
+
+//- [w]  Wyświetlanie całej książki telefonicznej
+//- [s] Szukanie po nazwisku i imieniu
+//- [a] Szukanie po numerze telefonu
+//- [d] Dodawanie nowego wpisu do książki  
+
 namespace Slowniki
 {
 
@@ -84,8 +90,16 @@ namespace Slowniki
                     Console.WriteLine("↓ [s] - Szukaj po nazwisku i imieniu ↓");
                     Console.WriteLine("Podaj Nazwisko i Imię:");
                     string NazwiskoImie = Console.ReadLine();
-                    string key = SzukajKlucz(numery, NazwiskoImie);
-                    Console.WriteLine($"Numer telefonu dla {NazwiskoImie} - {key}");
+
+                    if (SzukajKlucz(numery, NazwiskoImie) != null)
+                    {
+                        string key = SzukajKlucz(numery, NazwiskoImie);
+                        Console.WriteLine($"Numer telefonu dla {NazwiskoImie} - {key}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Nie odnaleziono osoby: {NazwiskoImie}");
+                    }    
                     Console.ReadLine();
 
                 }
